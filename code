@@ -1,0 +1,37 @@
+import random
+
+print("Твоя задача - угадать слово")
+input("нажми enter,чтобы продолжить")
+
+words = ['пирожок', 'чебурек', 'огурец', 'сосиска', 'котик', 'квокка', 'корабль', 'самолет', 'автомобиль', 'дирижабль',
+         'Любовь','  Доброта',  'Удача',  'Чудо', ' Сказка',  'Гармония', ' Красота',]
+word = random.choice(words)
+
+letters = []
+win = True
+hp = 10
+
+while hp > 0:
+    win = True
+    letter = input("введите букву")
+    letters.append(letter)
+    for symb in word:
+        if symb in letters:
+            print(symb, end=" ")
+        else:
+            print("*", end=" ")
+            win = False
+
+    print()
+    if win == True:
+        print("ты угадал!")
+        break
+
+    if letter not in word :
+        hp -= 1
+        print(f"у тебя осталось {hp} попыток")
+   
+    if hp==0:
+        print("ты проиграл")
+        print(f'было слово"{word}"')
+        break
